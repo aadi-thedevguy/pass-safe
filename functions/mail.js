@@ -29,7 +29,7 @@ exports.handler = async function(req ) {
             `,
             attachments: [{
               filename: 'mail-image.png',
-              path: 'public/mail-image.png',
+              path: 'https://firebasestorage.googleapis.com/v0/b/portfolio-52b82.appspot.com/o/mail-image.png?alt=media&token=4853efc9-1b2e-4ae8-923b-431f28c202f8',
               cid: 'unique@example.com' //same cid value as in the html img src
           }]
           }
@@ -59,3 +59,4 @@ exports.handler = async function(req ) {
     console.error(error)
     }
 }
+
