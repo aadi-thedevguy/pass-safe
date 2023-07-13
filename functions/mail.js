@@ -34,9 +34,8 @@ exports.handler = async (req, res) => {
       #email {
           font-family : 'Roboto Mono', monospace;
           color : #7498fb;
-          width: 50%; 
+          max-width: 700px; 
           margin: 0 auto; 
-          padding:0;
           font-size:16px;
           border : 1px solid #333;
           word-break:break-word;
@@ -45,6 +44,7 @@ exports.handler = async (req, res) => {
       .banner {
         color : white;
         background: #050c1f;
+        padding:1em 1.5em;
       }
      
         a{ 
@@ -59,17 +59,24 @@ exports.handler = async (req, res) => {
         }
         
         h1 {
-          font-size: 56px;
+          font-size: 2em;
           text-align: center;
+          color : white;
+          font-family : 'Roboto Mono', monospace;
+
         }
         
           h2{
-          font-size: 28px;
+          font-size: 1.5em;
           text-align: center;
+          color : white;
+          font-family : 'Roboto Mono', monospace;
+
         }
         
         p {
           font-weight: 500;
+          text-align : center;
         }
         
         td {
@@ -77,7 +84,7 @@ exports.handler = async (req, res) => {
         }
   
         .main {
-          padding: 30px 30px 30px 60px;
+          padding: 1.8em 1.8em 1.8em 3em;
         }
         
       </style>
