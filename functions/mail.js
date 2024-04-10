@@ -1,18 +1,20 @@
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.ionos.com",
+  port: 587,
+  secure: false, // upgrade later with STARTTLS
   auth: {
     user: process.env.USER,
     pass: process.env.PASSWORD,
   },
 });
 
-exports.handler = async (req, res) => {
+exports.handler = async (req) => {
   const { email, password } = JSON.parse(req.body);
 
   try {
     const options = {
-      from: '"Pass Safe" <thedevguy99@gmail.com>', // sender address
+      from: `"PASS SAFE" <${process.env.USER}>`, // sender address
       to: email, // list of receivers
       subject: "You have Successfully Generated your Password",
       text: `Thank You For Using Pass Safe. Here is your Random Generated Password: ${password} . Keep it Safe`,
@@ -129,7 +131,6 @@ exports.handler = async (req, res) => {
       </body>
         </html>
       `,
-      
     };
     const info = await transporter.sendMail(options);
     console.log("Message sent: %s " + info.messageId);
@@ -152,6 +153,7 @@ exports.handler = async (req, res) => {
       };
     }
   } catch (error) {
+    console.error(error.message)
     return {
       statusCode: 500,
       body: JSON.stringify({
