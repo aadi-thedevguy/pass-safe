@@ -1,20 +1,22 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
+const user = process.env.USER;
+const pass = process.env.PASSWORD;
 const transporter = nodemailer.createTransport({
   host: "smtp.ionos.com",
   port: 587,
   secure: false, // upgrade later with STARTTLS
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASSWORD,
+    user,
+    pass,
   },
 });
 
-exports.handler = async (req) => {
+export const handler = async (req) => {
   const { email, password } = JSON.parse(req.body);
 
   try {
     const options = {
-      from: `"PASS SAFE" <${process.env.USER}>`, // sender address
+      from: `"PASS SAFE" <${user}>`, // sender address
       to: email, // list of receivers
       subject: "You have Successfully Generated your Password",
       text: `Thank You For Using Pass Safe. Here is your Random Generated Password: ${password} . Keep it Safe`,
@@ -153,12 +155,12 @@ exports.handler = async (req) => {
       };
     }
   } catch (error) {
-    console.error(error.message)
+    console.error(error);
     return {
       statusCode: 500,
       body: JSON.stringify({
         status: "failed",
-        message: "Internal Server Error, Try again Later",
+        message: error.message || "Internal Server Error, Try again Later",
       }),
     };
   }
