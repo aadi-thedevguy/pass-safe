@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { render } from '@react-email/render';
-import Email from "../emails";
+import Email from "./emails";
 
 const user = process.env.USER;
 const pass = process.env.PASSWORD; 
