@@ -1,6 +1,7 @@
 {
-  "short_name": "secure-pass",
-  "name": "Secure Pass",
+  "short_name": "pass-safe",
+  "name": "Pass Safe",
+  "theme_color": "#000000",
   "description": "Change and Secure your password with a Random one sent right into your mailbox",
   "icons": [
     {
@@ -42,6 +43,5 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
   "background_color": "#ffffff"
 }
